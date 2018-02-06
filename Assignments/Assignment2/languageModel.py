@@ -73,7 +73,7 @@ class LanguageModel(object) :
     '''
     def checkProbability(self, context):
         modelsum = 0.0;
-        for token in self.getVocabulary():
+        for token in self.getVocabulary(context):
             context.append(token)
             modelsum += self.getWordProbability(context, len(context) - 1)
             del context[-1]

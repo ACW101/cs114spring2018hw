@@ -47,7 +47,7 @@ class Unigram(LanguageModel):
                     if word in self.probCounter
                     else self.probCounter[LanguageModel.UNK])
         
-    def getVocabulary(self):
+    def getVocabulary(self, context):
         return self.probCounter.keys()
 
     def generateWord(self):
@@ -56,7 +56,7 @@ class Unigram(LanguageModel):
         # use it to pick a word index from self.accu
         index = bisect.bisect_left( self.accu, i )
         # return corresponding word
-        return list(self.getVocabulary())[index]
+        return list(self.getVocabulary([]))[index]
         
     def generateSentence(self):
         result = []
